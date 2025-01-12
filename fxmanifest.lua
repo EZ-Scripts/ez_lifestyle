@@ -4,7 +4,7 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 
 author 'Rayaan Uddin'
 description 'A Life Style Script For RedM'
-version '1.0'
+version '1.1'
 
 
 client_scripts {
