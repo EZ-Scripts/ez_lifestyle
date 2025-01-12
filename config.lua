@@ -13,7 +13,7 @@ Config.LifeSyles = {
             {
                 label = "Cattleman Revolver",
                 quantity = 1,
-                name = 'telefono',
+                name = 'WEAPON_REVOLVER_CATTLEMAN',
                 type = 'weapon'
             },
             {
@@ -24,7 +24,7 @@ Config.LifeSyles = {
             {
                 label = "Whiskey Bottle",
                 quantity = 5,
-                name = 'acqua'
+                name = 'whisky'
             },
             {
                 label = "Cash",
@@ -126,40 +126,63 @@ Config.LifeSyles = {
 Config.GiveStarterItems = function(source, id)
     local VORPInv = exports.vorp_inventory
     local user = Core.getUser(source)
-    if not user then return end
+    if not user then
+        print("User not found for source: ", source)
+        return
+    end
     local character = user.getUsedCharacter
+    if not Config.LifeSyles[id] or not Config.LifeSyles[id].starterItems then
+        print("Lifestyle or starter items not found for id: ", id)
+        return
+    end
 
-    for k,v in pairs(Config.LifeSyles[id].starterItems) do
+    for k, v in pairs(Config.LifeSyles[id].starterItems) do
+        print("Processing item: ", v.name, "type: ", v.type, "quantity: ", v.quantity)
+
         if v.type == "item" then
             local itemCheck = VORPInv:getItemDB(v.name)
-            local canCarry = VORPInv:canCarryItems(source, v.quantity)       --can carry inv space
-            local canCarry2 = VORPInv:canCarryItem(source, v.name, v.quantity) --cancarry item limit
+            local canCarry = VORPInv:canCarryItems(source, v.quantity)
+            local canCarry2 = VORPInv:canCarryItem(source, v.name, v.quantity)
 
             if not itemCheck or not canCarry or not canCarry2 then
+                print("Cannot carry item or item not in DB: ", v.name)
                 goto continue
             end
 
             VORPInv:addItem(source, v.name, v.quantity)
+            print("Added item: ", v.name, "quantity: ", v.quantity)
+
         elseif v.type == "weapon" then
             local canCarry = VORPInv:canCarryWeapons(source, v.quantity, nil, v.name)
             if not canCarry then
+                print("Cannot carry weapon: ", v.name)
                 goto continue
             end
+
             local result = VORPInv:createWeapon(source, v.name, {})
             if not result then
+                print("Failed to create weapon: ", v.name)
                 goto continue
             end
+            print("Created weapon: ", v.name)
+
         elseif v.type == "money" then
             character.addCurrency(0, v.quantity)
+            print("Added money: ", v.quantity)
+
         elseif v.type == "gold" then
             character.addCurrency(1, v.quantity)
+            print("Added gold: ", v.quantity)
+
         elseif v.type == "rol" then
             character.addCurrency(2, v.quantity)
+            print("Added ROL: ", v.quantity)
         end
         ::continue::
     end
     return true
 end
+
 
 Config.GetUniqueIdentifierForCharacter = function(source)
     local Core = exports.vorp_core:GetCore()

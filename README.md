@@ -62,3 +62,5 @@ end)
 ### 2. Run the SQL file in your database.
 
 ### 3. [Optional] Make sure to remove default cash for new players from vorp_core/config.lua. Furthermore, make sure to remove any default items and weapons from the vorp_inventory/config.lua.
+
+![alt text](image.png)
