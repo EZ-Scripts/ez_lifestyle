@@ -1,7 +1,8 @@
 Config = {}
 Core = exports.vorp_core:GetCore()
-Config.DefaultLifeStyle = "civilian"
-Config.GiveStarterItemsDelay = 5000
+Config.DefaultLifeStyle = "civilian" -- What is returned when lifestyle is null. 
+Config.StarterItemsOnlyFirstTime = true -- If true, players can only get starter items once when they first create chararacter. Prevent Exploit.
+Config.ChooseLifeStyleOnce = true -- If true, players can only choose lifestyle once. This will automatically turn on Config.StarterItemsOnlyFirstTime
 
 Config.LifeSyles = {
     outlaw = {

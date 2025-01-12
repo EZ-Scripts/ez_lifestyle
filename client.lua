@@ -1,9 +1,13 @@
 local spawnLocation, spawnHeading = vector3(1,1,1), 0
 GetLifeStyle = function()
-    return LocalPlayer.state.lifeStyle or "civilian"
+    return LocalPlayer.state.lifeStyle or Config.DefaultLifeStyle
 end
 
 exports('GetLifeStyle', GetLifeStyle)
+
+RegisterCommand("lifestyle", function()
+    OpenStyleMenu()
+end, true)
 
 OpenStyleMenu = function()
     SetNuiFocus(true, true)
@@ -16,8 +20,7 @@ end
 RegisterNUICallback('play', function(data, cb)
     local id = data.id
     SetNuiFocus(false, false)
-    TriggerEvent("vorp:initCharacter", Config.LifeSyles[id].spawnLocation or spawnLocation, Config.LifeSyles[id].spawnHeading or spawnHeading, false)
-    TriggerServerEvent('ez_lifeStyle:chooseStyle', id)
+    TriggerServerEvent('ez_lifeStyle:chooseStyle', id, spawnLocation, spawnHeading)
 end)
 
 RegisterNUICallback('close', function(data, cb)
