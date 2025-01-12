@@ -1,3 +1,2 @@
-ALTER TABLE `users`
-	ADD `lifeStyle` VARCHAR(50)
-;
+ALTER TABLE `characters`
+ADD `lifestyle` VARCHAR(50) DEFAULT 'civilian';
