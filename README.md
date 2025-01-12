@@ -1,6 +1,6 @@
-# Radial Menu
+# Life Style
 
-**A radial menu for redm, specially for VORP. It can be easily updated to be integrated to another framework by a developer.**
+**A LifeStyle Script for RedM VORP. Allows players to have personalised starter items, spawn locations and servers to integrate what a player can do based on their role in society.**
 
 ## Script Features
 - Menu to select life styles.
