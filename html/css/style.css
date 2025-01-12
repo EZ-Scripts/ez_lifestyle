@@ -1,0 +1,190 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oldenburg&display=swap');
+
+@font-face {
+    font-family: 'ChineseRocksRg-Regular';
+    src: url(../fonts/ChineseRocksRg-Regular.ttf.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    /* Theme Colors */
+    --primary-color: #b22222; /* Firebrick Red */
+    --secondary-color: #000000; /* Black */
+    --accent-color: #ffef95; /* Gold (optional) */
+    --background-color: rgba(0, 0, 0, 0.9); /* Transparent black */
+    --text-color: #fff; /* White */
+    --card-bg-color: #1a1a1a; /* Very Dark Grey */
+    --card-shadow: rgba(0, 0, 0, 0.6);
+    --hover-shadow: rgba(255, 34, 34, 0.7); /* Subtle red glow on hover */
+
+    /* Font Families */
+    --title-font: 'ChineseRocksRg-Regular', serif; /* Title Font */
+    --body-font: 'Oldenburg', serif; /* Body Font */
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fullscreen Styling */
+body, html {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    color: var(--text-color);
+    overflow: hidden;
+    font-family: var(--body-font);
+}
+
+/* App Container */
+#app {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    background: transparent;
+}
+
+/* Title Styling */
+#title {
+    font-size: 4rem;
+    font-family: var(--title-font);
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 5px var(--card-shadow);
+    letter-spacing: 0.2rem;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+/* Article Styling */
+#styles {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1400px;
+}
+
+/* Life Style Card */
+.lifestyle {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    max-width: 400px;
+    height: 450px;
+    background: var(--card-bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 4px 4px 10px var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-image: url("../img/backgroundStyle.avif");
+}
+
+.lifestyle:hover {
+    transform: scale(1.05);
+    box-shadow: 6px 6px 15px var(--hover-shadow);
+}
+
+/* Card Content */
+.lifestyle .content {
+    z-index: 2;
+    position: relative;
+    padding: 1.5rem;
+    text-align: left;
+    color: var(--text-color);
+    width: 100%;
+}
+
+.lifestyle h1 {
+    font-size: 1.8rem;
+    font-family: var(--title-font);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 1px var(--hover-shadow);
+}
+
+.lifestyle .description {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    font-family: var(--body-font);
+    color: var(--text-color);
+}
+
+.lifestyle h2 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.2rem;
+    font-family: var(--title-font);
+    color: var(--accent-color);
+}
+
+.lifestyle .starterItems {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--body-font);
+}
+
+.lifestyle .starterItems li {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+    color: var(--text-color);
+}
+
+/* Card Background Image */
+.lifestyle .background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background-size: cover;
+    background-position: left bottom;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* Play Button */
+.playButton {
+    background: var(--primary-color); /* Default background */
+    color: var(--text-color); /* Default text color */
+    border: 2px solid var(--accent-color); /* Optional yellow border */
+    padding: 0.5rem 1rem; /* Padding for button size */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Font size */
+    font-family: var(--title-font); /* Use the title font */
+    text-transform: uppercase; /* Uppercase text */
+    cursor: pointer; /* Pointer cursor for interactivity */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 1rem;
+    margin: 0 auto;
+    transition: all 0.3s ease; /* Transition for all properties */
+    z-index: 2;
+}
+
+.playButton i {
+    margin-right: 0.5rem; /* Space between icon and text */
+}
+
+.playButton:hover {
+    background: var(--secondary-color); /* Black hover background */
+    color: var(--accent-color); /* Optional yellow text */
+    transform: scale(1.1); /* Slight zoom on hover */
+    border-color: var(--primary-color); /* Change border color */
+}

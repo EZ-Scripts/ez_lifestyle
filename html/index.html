@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Life Style</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Awesome Fonts -->
+</head>
+<body>
+    <div id="app">
+        <h1 id="title">SELECT YOUR LIFESTYLE</h1>
+
+        <article id="styles">
+            <section v-for="(v, key) in lifeStyles" :key="key" class="lifestyle">
+                <div class="content">
+                    <h1>{{ v.name }}</h1>
+                    <p class="description">{{ v.description }}</p>
+                    <h2>Starter Items</h2>
+                    <ul class="starterItems">
+                        <li v-for="(item, index) in v.starterItems" :key="index">
+                            {{ item.quantity }}x {{ item.label }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="background" :style="`background-image: url('img/${key}.png')`"></div>
+                <div @click="play(key)" class="playButton">
+                    <i class="fas fa-play"></i> <span>PLAY</span>
+                </div>
+            </section>
+        </article>
+    </div>
+    
+    <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js'></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
