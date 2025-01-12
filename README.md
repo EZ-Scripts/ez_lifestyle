@@ -31,3 +31,4 @@ exports["ez_lifestyle"]:GetLifeStyle()
 https://docs.ezscripts.org/
 
 ![alt text](image.png)
+Preview Video: https://youtu.be/0dStdxe9-gw

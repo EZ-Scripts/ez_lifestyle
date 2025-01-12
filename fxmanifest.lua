@@ -27,5 +27,5 @@ files {
     'html/css/*.css',
     'html/js/*.js',
 	'html/fonts/*.*',
-    'html/img/*.png',
+    'html/img/*.*',
 }
